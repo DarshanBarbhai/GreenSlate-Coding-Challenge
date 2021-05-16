@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrinksMachineApp.Interfaces
+namespace DrinksMachineAppModel.Interfaces
 {
     /// <summary>
     /// Interface meant to define what coins are, can be implemented as required. Interface was made due to the different

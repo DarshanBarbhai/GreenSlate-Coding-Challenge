@@ -1,11 +1,11 @@
-﻿using DrinksMachineApp.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DrinksMachineAppModel.Interfaces;
 
-namespace DrinksMachineApp.Models
+namespace DrinksMachineAppModel
 {
     /// <summary>
     /// Implementation of the IProduct interface, represents the drinks we will be ordering in our DrinkVendingMachine.
@@ -22,7 +22,8 @@ namespace DrinksMachineApp.Models
         /// <param name="name">Name of the drink.</param>
         /// <param name="cost">Cost of the drink in cents</param>
         /// <param name="stock">Number of the drink in stock.</param>
-        public Drink(string name, int cost, int stock) {
+        public Drink(string name, int cost, int stock)
+        {
             this.Name = name;
             this.Cost = cost;
             this.Stock = stock;

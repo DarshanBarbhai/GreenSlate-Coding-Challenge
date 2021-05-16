@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DrinksMachineApp.Interfaces;
+using DrinksMachineAppModel.Interfaces;
 
-namespace DrinksMachineApp.Models
+namespace DrinksMachineAppModel
 {
     /// <summary>
     /// Implementation of the ICoin interface
@@ -27,8 +23,9 @@ namespace DrinksMachineApp.Models
         /// <param name="denomination">denomonation/value of the coin</param>
         /// <param name="amount">amount of coins</param>
         /// <param name="name">name of coin</param>
-        public Coin(int denomination, int amount, string name = "") {
-            this.Denomination = denomination    ;
+        public Coin(int denomination, int amount, string name = "")
+        {
+            this.Denomination = denomination;
             this.Amount = amount;
             this.Name = name;
         }

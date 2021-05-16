@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinksMachineApp", "DrinksMachineApp.csproj", "{F74767C1-5E09-4906-9203-C0F2BBDB2ABB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrinksMachineApp", "DrinksMachineApp.csproj", "{F74767C1-5E09-4906-9203-C0F2BBDB2ABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinksMachineAppModel", "..\DrinksMachineAppModel\DrinksMachineAppModel.csproj", "{B0E52668-2319-45B8-BB1B-E55A2DED15B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinksMachineAppTests", "..\DrinksMachineAppTests\DrinksMachineAppTests.csproj", "{66F9ECFE-468E-4E11-BB8A-04B2DF6596DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F74767C1-5E09-4906-9203-C0F2BBDB2ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F74767C1-5E09-4906-9203-C0F2BBDB2ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F74767C1-5E09-4906-9203-C0F2BBDB2ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E52668-2319-45B8-BB1B-E55A2DED15B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E52668-2319-45B8-BB1B-E55A2DED15B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E52668-2319-45B8-BB1B-E55A2DED15B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E52668-2319-45B8-BB1B-E55A2DED15B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F9ECFE-468E-4E11-BB8A-04B2DF6596DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F9ECFE-468E-4E11-BB8A-04B2DF6596DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F9ECFE-468E-4E11-BB8A-04B2DF6596DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F9ECFE-468E-4E11-BB8A-04B2DF6596DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

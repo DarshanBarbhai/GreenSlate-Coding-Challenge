@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DrinksMachineAppModel\DrinksMachineAppModel.csproj" />
+  </ItemGroup>
+
 </Project>

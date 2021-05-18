@@ -44,9 +44,9 @@ namespace DrinksMachineAppTests
             order.Add(new Drink("Coke", 25, 1));
 
             // Check that no change is returned and the inventory and register of vending machine are updated
-            Assert.IsTrue(vendingMachine.Buy(payment, order).Count == 0);
+            Assert.IsNull(vendingMachine.Buy(payment, order));
             Assert.AreEqual(0, vendingMachine.Inventory[0].Stock);
-            Assert.AreEqual(2, vendingMachine.Register[0].Amount);
+            Assert.AreEqual(1, vendingMachine.Register[0].Amount);
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace DrinksMachineAppTests
             order.Add(new Drink("Sprite", 15, 1));
 
             // Check that change is returned and the inventory and register of vending machine are updated
-            Assert.AreEqual(new Coin(10, 1, "Dime"), vendingMachine.Buy(payment, order)[0]);
+            Assert.AreEqual((new Coin(10, 1, "Dime")).Amount, vendingMachine.Buy(payment, order)[0].Amount);
             Assert.AreEqual(0, vendingMachine.Inventory.First(s => s.Name == "Sprite").Stock);
             Assert.AreEqual(1, vendingMachine.Register.First(s => s.Denomination == 25).Amount);
             Assert.AreEqual(0, vendingMachine.Register.First(s => s.Denomination == 10).Amount);

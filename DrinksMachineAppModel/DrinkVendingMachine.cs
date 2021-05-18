@@ -67,6 +67,11 @@ namespace DrinksMachineAppModel
             }
         }
 
+        /// <summary>
+        /// Check that all the given ordered drinks are in stock.
+        /// </summary>
+        /// <param name="orderedDrinks">The drinks that are being ordered.</param>
+        /// <returns>If there are enough drinks in stock for the given order.</returns>
         private bool CheckDrinksStock(List<IProduct> orderedDrinks) {
             // Go through all ordered drinks and make sure there is sufficient stock in machine 
             foreach (Drink drink in orderedDrinks) {
@@ -81,6 +86,11 @@ namespace DrinksMachineAppModel
             return true;
         }
 
+        /// <summary>
+        /// Gets the monetary value of all the coins in the given list.
+        /// </summary>
+        /// <param name="coins">List of coins.</param>
+        /// <returns>The monetary value of the given coins.</returns>
         private int GetCoinsValue(List<ICoin> coins) {
             int result = 0;
 
@@ -92,6 +102,11 @@ namespace DrinksMachineAppModel
             return result;
         }
 
+        /// <summary>
+        /// Gets the monetary value of all the drinks in the given list.
+        /// </summary>
+        /// <param name="drinks">List of drinks.</param>
+        /// <returns>The monetary value of the given drinks.</returns>
         private int GetDrinksValue(List<IProduct> drinks)
         {
             int result = 0;
@@ -105,6 +120,10 @@ namespace DrinksMachineAppModel
             return result;
         }
 
+        /// <summary>
+        /// Remove the ordered drinks from the drink vending machine's inventory.
+        /// </summary>
+        /// <param name="orderedDrinks">The ordered drinks.</param>
         private void RemoveDrinksFromInventory(List<IProduct> orderedDrinks) {
             // subtract the ordered drinks from the drink vending machines stock
             foreach (Drink drink in orderedDrinks) {
@@ -112,6 +131,10 @@ namespace DrinksMachineAppModel
             }
         }
 
+        /// <summary>
+        /// Add coins to the drink vending machine's register.
+        /// </summary>
+        /// <param name="coinsPaid">The coins to be added to the register.</param>
         private void AddCoinsToRegister(List<ICoin> coinsPaid) {
             // add the coins from the drink vending machines register
             foreach (Coin coin in coinsPaid)
@@ -120,6 +143,10 @@ namespace DrinksMachineAppModel
             }
         }
 
+        /// <summary>
+        /// Remove coins from the drink vending machine's register.
+        /// </summary>
+        /// <param name="coins">The coins to remove from the register.</param>
         private void RemoveCoinsFromRegister(List<ICoin> coins)
         {
             // add the coins from the drink vending machines register
@@ -129,6 +156,13 @@ namespace DrinksMachineAppModel
             }
         }
 
+        /// <summary>
+        /// Get the change required for an order of drinks.
+        /// </summary>
+        /// <param name="changeRequired">The value of the change required.</param>
+        /// <param name="orderedDrinks">The drinks that were ordered.</param>
+        /// <param name="payment">The coins that were given as payment for the drinks.</param>
+        /// <returns>A list of coins containing the required change (if there is enough change to return, otherwise order fails and returns null).</returns>
         private List<ICoin> GetChange(int changeRequired, List<IProduct> orderedDrinks, List<ICoin> payment) {
             List<ICoin> change = new List<ICoin>();
 

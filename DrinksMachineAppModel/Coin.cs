@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using DrinksMachineAppModel.Interfaces;
 
 namespace DrinksMachineAppModel
@@ -6,10 +8,26 @@ namespace DrinksMachineAppModel
     /// <summary>
     /// Implementation of the ICoin interface
     /// </summary>
-    public class Coin : ICoin
+    public class Coin : ICoin, INotifyPropertyChanged
     {
+        private int amount;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public int Denomination { get; set; }
-        public int Amount { get; set; }
+        public int Amount {
+            get
+            {
+                return amount;
+            }
+            set {
+                if (value >= 0)
+                {
+                    amount = value;
+                    NotifyPropertyChanged();
+                }
+            } 
+        }
 
         /// <summary>
         /// The name for this type of coin
@@ -37,6 +55,14 @@ namespace DrinksMachineAppModel
         public override string ToString()
         {
             return this.Name + ", " + "denomiation: " + this.Denomination + ", amount: " + this.Amount;
+        }
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

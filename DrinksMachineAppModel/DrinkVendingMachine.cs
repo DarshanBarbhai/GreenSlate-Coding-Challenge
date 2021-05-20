@@ -36,7 +36,7 @@ namespace DrinksMachineAppModel
         {
             // Make sure that we have enough stock of drinks being ordered
             if (!CheckDrinksStock(desiredDrinks))
-                throw new Exception("Not Enough Stock.");
+                throw new Exception("Drink is sold out, your purchase could not be processed.");
 
             // Get value of payment given and drinks being bought
             int paymentVal = GetCoinsValue(payment);
@@ -63,7 +63,7 @@ namespace DrinksMachineAppModel
                 }
             }
             else {
-                throw new Exception("Not Enough Payment.");
+                throw new Exception("Not enough payment, your purchase could not be processed.");
             }
         }
 
@@ -194,7 +194,7 @@ namespace DrinksMachineAppModel
             // If all coin denominations have been cycled through and the change required did not reach 0, we don't have
             // enough change in the vending machine
             RemoveCoinsFromRegister(payment);
-            throw new Exception("Not Enough Change.");
+            throw new Exception("Not sufficient change in the inventory.");
         }
     }
 }

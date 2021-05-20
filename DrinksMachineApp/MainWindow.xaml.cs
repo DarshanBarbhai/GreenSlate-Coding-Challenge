@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrinksMachineApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,21 @@ namespace DrinksMachineApp
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindowViewModel)DataContext).OrderDrinks();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ((MainWindowViewModel)DataContext).UpdateOrderTotal();
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            ((MainWindowViewModel)DataContext).UpdatePaymentTotal();
         }
     }
 }

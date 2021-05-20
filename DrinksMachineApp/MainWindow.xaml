@@ -3,10 +3,112 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DrinksMachineApp"
+        xmlns:local="clr-namespace:DrinksMachineApp.ViewModels" 
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".6*"/>
+            <RowDefinition Height=".07*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.Row="0">
+            <Run FontWeight="Bold" FontSize="26" Text="Coin Information"/>
+        </TextBlock>
+        
+        <!--Region for specifying coins to pay with-->
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding PaymentCoins}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0">
+                            <Run FontWeight="Bold" FontSize="20" Text="{Binding Name}"/>
+                        </TextBlock>
+                        <TextBox Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged_1"  Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
 
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        
+        <!-- Region for specifying drinks to order -->
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <TextBlock Grid.Row="0">
+                <Run FontWeight="Bold" FontSize="26" Text="Products Information"/>
+            </TextBlock>
+            <ListView ItemsSource="{Binding OrderedDrinks}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0">
+                                <Run FontWeight="Bold" FontSize="20" Text="{Binding Name}"/>
+                            </TextBlock>
+                            <TextBox Text="{Binding Stock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" TextChanged="TextBox_TextChanged"/>
+                            <TextBlock Grid.Row="2">
+                                <Run FontWeight="Bold" FontSize="14" Text="Cost:  "/>
+                                <Run Text="{Binding Cost}"/>
+                            </TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        
+        <!-- Order Total and Vending Machine Inventory Region-->
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock>
+                <Run FontWeight="Bold" FontSize="26" Text="Inventory Information"/>
+            </TextBlock>
+
+            <ListView ItemsSource="{Binding VendingMachine.Inventory}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run FontWeight="Bold" FontSize="18" Text="{Binding Name}"/>
+                            <Run FontWeight="Bold" FontSize="18" Text=": "/>
+                            <Run Text="{Binding Stock, Mode=TwoWay}"/>
+                            <Run Text=" drinks remaining"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <TextBlock>
+                <Run FontWeight="Bold" FontSize="24" Text="Order Total:  "/>
+                <Run FontSize="16" Text="{Binding OrderTotal, Mode=TwoWay}"/>
+            </TextBlock>
+
+            <TextBlock>
+                <Run FontWeight="Bold" FontSize="24" Text="Payment Total:  "/>
+                <Run FontSize="16" Text="{Binding PaymentTotal, Mode=TwoWay}"/>
+            </TextBlock>
+        </StackPanel>
+
+        <Button Grid.Row="3" Grid.Column="1" Background="AliceBlue" Click="Button_Click" IsEnabled="{Binding OrderButtonEnabled}">
+            <Run FontWeight="Bold" FontSize="18" Text="Get Drinks"/>
+        </Button>
     </Grid>
 </Window>

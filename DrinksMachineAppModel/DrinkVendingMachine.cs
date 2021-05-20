@@ -171,7 +171,7 @@ namespace DrinksMachineAppModel
 
             // We'll be using a greedy approach to use the least amount of coins to make up the change
             // We'll start with the coins with the highest denomination
-            Register.OrderByDescending(c => c.Denomination);
+            Register = Register.OrderByDescending(c => c.Denomination).ToList();
 
             foreach (Coin coin in Register) {
                 // Get the most amount of the current coin that can be a part of the change
